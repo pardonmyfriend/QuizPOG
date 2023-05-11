@@ -12,12 +12,6 @@ namespace QuizPOG.ViewModel
         private readonly Action<object> _execute;
         private readonly Predicate<object> _canExecute;
 
-        public RelayCommand(Action<object> execute)
-        {
-            _execute = execute;
-            _canExecute = null;
-        }
-
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
             _execute = execute;
@@ -30,10 +24,8 @@ namespace QuizPOG.ViewModel
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-
         public bool CanExecute(object parameter)
         {
-
             return _canExecute == null ? true : _canExecute(parameter);
         }
 

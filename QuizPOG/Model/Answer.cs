@@ -8,14 +8,7 @@ namespace QuizPOG.Model
 {
     public class Answer
     {
-        public Answer(string content, bool isCorrect)
-        {
-            Content = content;
-            IsCorrect = isCorrect;
-        }
-
-        public string Content { get; set; }
-
+        public string AnsContent { get; set; }
         public bool IsCorrect { get; set; }
     }
 }
