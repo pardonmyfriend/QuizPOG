@@ -1,4 +1,7 @@
-﻿using System;
+﻿using QuizPOG.Store;
+using QuizPOG.View;
+using QuizPOG.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +16,17 @@ namespace QuizPOG
     /// </summary>
     public partial class App : Application
     {
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            NavigationStore navigationStore = new NavigationStore();
+            navigationStore.CurrentViewModel = new QuestionListViewModel(navigationStore);
+            MainWindow window = new MainWindow()
+            {
+                DataContext = new MainViewModel(navigationStore)
+            };
+            window.Show();
+            base.OnStartup(e);
+        }
     }
 }
